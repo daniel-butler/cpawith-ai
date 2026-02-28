@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <link rel="canonical" href="{{url}}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{url}}">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CPA with AI">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="CPA with AI" href="/feed.xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/static/css/tokens.css">
+  <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav">
+      <a href="/" class="logo">CPA with AI</a>
+      <div class="nav-links">
+        <a href="/posts/">Tutorials</a>
+        <a href="/about/">About</a>
+        <button class="theme-toggle" aria-label="Toggle dark mode" onclick="toggleTheme()">
+          <span class="theme-icon-light">☀️</span>
+          <span class="theme-icon-dark">🌙</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    {{content}}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Built by <a href="/about/">Daniel Butler</a> — CPA turned software engineer at Amazon.</p>
+    </div>
+  </footer>
+
+  <script src="/static/js/theme.js"></script>
+</body>
+</html>

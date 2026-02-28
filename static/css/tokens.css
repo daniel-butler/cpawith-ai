@@ -1,0 +1,144 @@
+/*
+ * cpato.dev Design Tokens
+ * Navy & Warm Amber — Outfit / Inter / JetBrains Mono
+ * Generated: 2026-02-27
+ *
+ * Usage: Import this file, then reference var(--token-name) throughout.
+ * The :root scope handles light mode; [data-theme="dark"] handles dark.
+ */
+
+/* ===== FONTS ===== */
+/* 
+ * Load via Google Fonts or self-host:
+ * - Outfit: 400, 500, 600, 700, 800 (headings, nav, labels)
+ * - Inter: 400, 500, 600, 700 (body, meta, callouts)
+ * - JetBrains Mono: 400, 500, 600 (code, financial data)
+ */
+
+/* ===== LIGHT MODE (default) ===== */
+:root {
+  /* Core */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F6F1;
+  --bg-tertiary: #F0EDE6;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a5a;
+  --text-tertiary: #8a8a96;
+  --accent: #D4A843;
+  --accent-hover: #C09530;
+  --accent-subtle: #FBF5E8;
+  --navy: #16213e;
+  --navy-light: #1a2744;
+  --border: #E5E2DB;
+  --border-subtle: #EEEAE3;
+
+  /* Semantic */
+  --danger: #C0392B;
+  --danger-bg: #FDF2F1;
+  --danger-border: #F0C6C2;
+  --warning: #D4A843;
+  --warning-bg: #FBF5E8;
+  --warning-border: #E8D5A0;
+  --success: #27896B;
+  --success-bg: #EFF8F4;
+  --success-border: #B8DFD0;
+  --info: #2E6B9E;
+  --info-bg: #EFF5FB;
+  --info-border: #B4D0E8;
+
+  /* Code */
+  --code-bg: #F5F3EE;
+  --code-border: #E5E2DB;
+  --code-text: #1a1a2e;
+  --code-comment: #8a8a96;
+  --code-keyword: #16213e;
+  --code-string: #27896B;
+  --code-number: #C0392B;
+  --code-function: #2E6B9E;
+
+  /* Typography scale */
+  --font-heading: 'Outfit', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ===== DARK MODE ===== */
+[data-theme="dark"] {
+  /* Core */
+  --bg-primary: #0F1320;
+  --bg-secondary: #161B2E;
+  --bg-tertiary: #1D2340;
+  --text-primary: #E8E6E1;
+  --text-secondary: #A0A0AD;
+  --text-tertiary: #6B6B7A;
+  --accent: #D4A843;
+  --accent-hover: #E0B854;
+  --accent-subtle: #2A2418;
+  --navy: #8BA2C4;
+  --navy-light: #A0B5D4;
+  --border: #2A2F42;
+  --border-subtle: #222738;
+
+  /* Semantic */
+  --danger: #E57373;
+  --danger-bg: #2A1515;
+  --danger-border: #4A2020;
+  --warning: #D4A843;
+  --warning-bg: #2A2418;
+  --warning-border: #3D3520;
+  --success: #66BB9A;
+  --success-bg: #152A22;
+  --success-border: #1E3D30;
+  --info: #64A8D8;
+  --info-bg: #15202A;
+  --info-border: #1E3040;
+
+  /* Code */
+  --code-bg: #161B2E;
+  --code-border: #2A2F42;
+  --code-text: #E8E6E1;
+  --code-comment: #6B6B7A;
+  --code-keyword: #8BA2C4;
+  --code-string: #66BB9A;
+  --code-number: #E57373;
+  --code-function: #64A8D8;
+}
+
+/* ===== PREFERS DARK (auto) ===== */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-primary: #0F1320;
+    --bg-secondary: #161B2E;
+    --bg-tertiary: #1D2340;
+    --text-primary: #E8E6E1;
+    --text-secondary: #A0A0AD;
+    --text-tertiary: #6B6B7A;
+    --accent: #D4A843;
+    --accent-hover: #E0B854;
+    --accent-subtle: #2A2418;
+    --navy: #8BA2C4;
+    --navy-light: #A0B5D4;
+    --border: #2A2F42;
+    --border-subtle: #222738;
+    --danger: #E57373;
+    --danger-bg: #2A1515;
+    --danger-border: #4A2020;
+    --warning: #D4A843;
+    --warning-bg: #2A2418;
+    --warning-border: #3D3520;
+    --success: #66BB9A;
+    --success-bg: #152A22;
+    --success-border: #1E3D30;
+    --info: #64A8D8;
+    --info-bg: #15202A;
+    --info-border: #1E3040;
+    --code-bg: #161B2E;
+    --code-border: #2A2F42;
+    --code-text: #E8E6E1;
+    --code-comment: #6B6B7A;
+    --code-keyword: #8BA2C4;
+    --code-string: #66BB9A;
+    --code-number: #E57373;
+    --code-function: #64A8D8;
+  }
+}

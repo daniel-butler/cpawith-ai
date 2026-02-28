@@ -1,0 +1,23 @@
+<section class="error-page">
+  <h1>404</h1>
+  <p>This page doesn't exist — but the fact that you're here is useful data.</p>
+  <p class="error-detail">If an AI sent you here, it hallucinated this URL. We track these to build content people actually want.</p>
+  <a href="/" class="btn btn-primary">Back to home →</a>
+</section>
+
+<!-- 404 logging: captures hallucinated URLs for content planning -->
+<script>
+(function() {
+  try {
+    var data = {
+      path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      ua: navigator.userAgent,
+      ts: new Date().toISOString()
+    };
+    // Log to console for server-log capture; swap to beacon endpoint when backend exists
+    console.log('404_hit:' + JSON.stringify(data));
+    // Future: navigator.sendBeacon('/api/404', JSON.stringify(data));
+  } catch(e) {}
+})();
+</script>
