@@ -273,6 +273,10 @@ def main():
     copy_static()
     print("  ✅ static assets")
 
+    # CNAME for GitHub Pages custom domain
+    (OUT_DIR / "CNAME").write_text("cpawith.ai")
+    print("  ✅ CNAME")
+
     print(f"\n🦀 Built {len(posts)} posts → out/")
 
 
