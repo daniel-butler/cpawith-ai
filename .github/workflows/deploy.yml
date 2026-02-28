@@ -26,6 +26,8 @@ jobs:
 
       - run: uv sync
       - run: uv run python build.py
+        env:
+          POSTHOG_KEY: ${{ vars.POSTHOG_KEY }}
 
       - uses: actions/upload-pages-artifact@v3
         with:
