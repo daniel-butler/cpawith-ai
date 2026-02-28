@@ -58,6 +58,8 @@ def render_markdown(text: str) -> str:
 
 def render_template(template: str, **kwargs) -> str:
     """Simple {{ var }} template rendering."""
+    # Inject global vars
+    kwargs.setdefault("posthog_key", os.environ.get("POSTHOG_KEY", ""))
     for key, value in kwargs.items():
         template = template.replace(f"{{{{{key}}}}}", str(value))
     return template
