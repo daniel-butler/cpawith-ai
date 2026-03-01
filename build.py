@@ -65,10 +65,14 @@ def render_template(template: str, **kwargs) -> str:
     return template
 
 
-def build_post(md_path: Path, base_template: str, post_template: str) -> dict:
-    """Build a single post. Returns metadata dict."""
+def build_post(md_path: Path, base_template: str, post_template: str) -> dict | None:
+    """Build a single post. Returns metadata dict, or None if draft."""
     raw = md_path.read_text()
     meta, body = parse_frontmatter(raw)
+
+    # Skip drafts
+    if meta.get("draft", False):
+        return None
 
     slug = meta.get("slug", md_path.stem)
     title = meta.get("title", slug.replace("-", " ").title())
@@ -246,8 +250,38 @@ def main():
     if POSTS_DIR.exists():
         for md_file in sorted(POSTS_DIR.glob("*.md")):
             meta = build_post(md_file, base_template, post_template)
+            if meta is None:
+                print(f"  📝 {md_file.stem} (draft, skipped)")
+                continue
             posts.append(meta)
             print(f"  ✅ {meta['title']}")
+
+    # Build standalone pages (content/pages/*.md)
+    pages_dir = CONTENT_DIR / "pages"
+    page_template = load_template("page.html")
+    if pages_dir.exists():
+        for md_file in sorted(pages_dir.glob("*.md")):
+            raw = md_file.read_text()
+            meta, body = parse_frontmatter(raw)
+            if meta.get("draft", False):
+                print(f"  📝 {md_file.stem} (draft page, skipped)")
+                continue
+            slug = meta.get("slug", md_file.stem)
+            title = meta.get("title", slug.replace("-", " ").title())
+            description = meta.get("description", "")
+            html_body = render_markdown(body)
+            page_html = render_template(page_template, title=title, content=html_body)
+            full_html = render_template(
+                base_template,
+                title=f"{title} — CPA with AI",
+                description=description,
+                content=page_html,
+                url=f"https://cpawith.ai/{slug}/",
+            )
+            out_path = OUT_DIR / slug
+            out_path.mkdir(parents=True, exist_ok=True)
+            (out_path / "index.html").write_text(full_html)
+            print(f"  ✅ /{slug}/ (page)")
 
     # Build index
     build_index(posts, base_template, index_template)
